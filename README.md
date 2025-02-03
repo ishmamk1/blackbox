@@ -147,3 +147,9 @@ Back to integrating or adding any state-specific information to your "html" for 
     )
 }
 ```
+
+## Set Up 'Keys' That Holds Sensitive Data
+
+All keys are stored in `backend/keys`.
+
+Most notably is the `service-account.json` file which should store your FireBase FireStore credentials in a JSON format.
