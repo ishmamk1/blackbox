@@ -1,2 +1,2 @@
 backend/keys/*
-!backend/keys/.gitignore
+!backend/keys/.gitkeep
