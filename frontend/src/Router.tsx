@@ -5,6 +5,7 @@ import LandingPage from "./pages/LandingPage";
 import NotFound from "./pages/NotFound";
 import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
+import UploadPage from "./pages/UploadPage"; // Make sure this path is correct
 
 // Import your components
 
@@ -16,6 +17,7 @@ const Router: React.FC = () => {
         <Route path="*" Component={NotFound}></Route>
         <Route path="/login" Component={LoginPage}></Route>
         <Route path="/register" Component={RegisterPage}></Route>
+        <Route path="/upload" Component={UploadPage}></Route>
       </Routes>
     </BrowserRouter>
   );

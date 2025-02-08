@@ -4,8 +4,13 @@ import datetime
 import os
 
 # Path to your service account JSON file
+<<<<<<< Updated upstream
 SERVICE_ACCOUNT_PATH = "/Users/ishmam/blackbox-1/backend/keys/service-account.json"
 
+=======
+
+SERVICE_ACCOUNT_PATH = "/Users/muslimhussaini/blackbox/backend/keys/blackbox-firebase.json"
+>>>>>>> Stashed changes
 
 def initialize_firebase():
     try:
@@ -68,6 +73,22 @@ def register_new_user(username: str, email:str, password: str):
         "following": []
     })
     return check_user_exists(username)
+
+def add_new_image(username: str, image_url:str):
+    image_collection = db.collection("imageUpload")
+    image_collection.add({
+        "username": username,
+        "s3Reference": image_url
+    })
+
+def add_intrusion(username:str, image_url:str):
+    intrusion_collection = db.collection("intrusionLogs")
+    intrusion_collection.add({
+        "username":username,
+        "s3Reference": image_url,
+        "datetime": str(datetime.now())
+    })
+
 
 
 db = initialize_firebase()
