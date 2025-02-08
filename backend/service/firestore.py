@@ -4,7 +4,7 @@ import datetime
 import os
 
 # Path to your service account JSON file
-SERVICE_ACCOUNT_PATH = "/Users/muslimhussaini/blackbox/backend/keys/blackbox-firebase.json"
+SERVICE_ACCOUNT_PATH = os.getenv("SERVICE_PATH")
 
 
 def initialize_firebase():
