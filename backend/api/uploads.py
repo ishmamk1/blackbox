@@ -4,13 +4,15 @@ from flask_cors import CORS
 
 from service.firestore import db, check_user_exists, register_new_user, check_email_exists
 
-upload = Blueprint('upload', __name__)
+uploads = Blueprint('uploads', __name__)
 
-@upload.route("/upload", methods=["POST"])
+@uploads.route("/upload", methods=["POST"])
 def upload_image():
-    user
+    print("hello")
+    return "a"
 
 
-@upload.route("/intrusion_alerts", methods=["GET", "POST"])
+"""
+@uploads.route("/intrusion_alerts", methods=["GET", "POST"])
 def get_intrusions():
-    
+"""

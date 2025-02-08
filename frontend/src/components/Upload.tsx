@@ -1,15 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import axios from "axios";
+import { AppContext } from '../store/appContext';
 
-interface UploadProps {
-  uploadUrl: string; // API endpoint to send files
-  username: string; //username from uauth
-}
-
-const Upload: React.FC<UploadProps> = ({ uploadUrl, username }) => {
+const Upload: React.FC = () => {
   const [files, setFiles] = useState<FileList | null>(null);
   const [uploading, setUploading] = useState(false);
   const [message, setMessage] = useState<string | null>(null);
+  const { state, actions } = useContext(AppContext);
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.files) {
@@ -26,14 +23,16 @@ const Upload: React.FC<UploadProps> = ({ uploadUrl, username }) => {
     setMessage(null);
 
     const formData = new FormData();
+    formData.append("username", state.username || "");
     Array.from(files).forEach((file) => {
       formData.append("files", file);
     });
 
-    formData.append("username", username);
+    // Optionally, append a username if needed
+    // formData.append("username", username);
 
     try {
-      const response = await axios.post(uploadUrl, formData, {
+      const response = await axios.post("//127.0.0.1:5000/upload", formData, {
         headers: { "Content-Type": "multipart/form-data" },
       });
 
