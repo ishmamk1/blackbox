@@ -57,7 +57,7 @@ const RegisterPage: React.FC = () => {
                 placeholder="username"
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
-                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600"
+                className="bg-gray-50 border border-gray-300 text-gray-900 dark:text-white text-sm rounded-lg block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600"
                 required
               />
             </div>
@@ -72,7 +72,7 @@ const RegisterPage: React.FC = () => {
                 placeholder="name@company.com"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600"
+                className="bg-gray-50 border border-gray-300 text-gray-900 dark:text-white text-sm rounded-lg block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600"
                 required
               />
             </div>
@@ -87,7 +87,7 @@ const RegisterPage: React.FC = () => {
                 placeholder="••••••••"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600"
+                className="bg-gray-50 border border-gray-300 text-gray-900 dark:text-white text-sm rounded-lg block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600"
                 required
               />
             </div>

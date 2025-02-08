@@ -10,7 +10,7 @@ export default function Navbar() {
 
     return (
         <main className="flex flex-col">
-        <header className="flex items-center justify-between px-4 py-3">
+        <header className="flex items-center justify-between px-4 py-3 bg-gray-950">
             {/* Left: About Us Button */}
             {state.token != null ? (
                 <>
@@ -29,7 +29,7 @@ export default function Navbar() {
             {/* Center: Echo Text */}
             <div className="text-center flex-grow">
             <a href="/">
-                <span className="text-black text-2xl transition-all duration-300 hover:scale-105">blackbox</span>
+                <span className="text-white text-2xl transition-all duration-300 hover:scale-105">BlackBox</span>
             </a>
             </div>
 

@@ -7,3 +7,5 @@ stream/uploads
 /backend/images/*
 
 /backend/familiar_faces/*
+
+*/__pycache__/
