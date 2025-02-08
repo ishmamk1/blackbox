@@ -20,19 +20,7 @@ def initialize_firebase():
         db = firestore.client()
         print("Connected to Firestore!")
 
-        # Test Writing to Firestore
-        user_collection = db.collection("users")
-        """
-        user_collection.add({
-            "username": "johndoe1",
-            "email": "johndoe@example.com",
-            "password": "abc123",
-            "profile_picture": "",
-            "bio": "Just another tech enthusiast!",
-            "followers": [],
-            "following": []
-        })
-        """
+
 
         print("Document written successfully!")
         return db
