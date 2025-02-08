@@ -1,9 +1,11 @@
 import firebase_admin
 from firebase_admin import credentials, firestore
 import datetime
+import os
 
 # Path to your service account JSON file
 SERVICE_ACCOUNT_PATH = "/Users/ishmam/blackbox-1/backend/keys/service-account.json"
+
 
 def initialize_firebase():
     try:

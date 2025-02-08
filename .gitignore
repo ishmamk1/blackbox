@@ -1,3 +1,5 @@
 backend/keys/*
 !backend/keys/.gitkeep
 /backend/venv/*
+
+stream/uploads
