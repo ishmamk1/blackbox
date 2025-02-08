@@ -3,6 +3,7 @@ import axios from "axios";
 
 interface UploadProps {
   uploadUrl: string; // API endpoint to send files
+  userName: string
 }
 
 const Upload: React.FC<UploadProps> = ({ uploadUrl }) => {
