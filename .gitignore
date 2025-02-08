@@ -3,3 +3,6 @@ backend/keys/*
 /backend/venv/*
 
 stream/uploads
+
+
+.png
