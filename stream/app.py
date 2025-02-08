@@ -10,12 +10,10 @@ CORS(app, origins=["http://localhost:5173"])
 
 # Open the camera (you can modify the index if you have multiple cameras)
 cap = cv2.VideoCapture(0)
-
-# Define FPS
 FPS = 30
 
 # Define the uploads folder path
-uploads_folder = '/Users/ishmam/blackbox-1/stream/uploads'
+uploads_folder = 'backend/uploads'
 
 # Create the uploads folder if it doesn't exist
 if not os.path.exists(uploads_folder):
@@ -68,4 +66,4 @@ def video_stream():
     return Response(generate_frames(), content_type='multipart/x-mixed-replace; boundary=frame')
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=8000)
+    app.run(host='1.1.1.1', port=8000)
