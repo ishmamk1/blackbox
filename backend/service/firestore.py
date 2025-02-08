@@ -4,9 +4,7 @@ import datetime
 import os
 
 # Path to your service account JSON file
-SERVICE_ACCOUNT_PATH = "/Users/ishmam/blackbox-1/backend/keys/service-account.json"
-
-#SERVICE_ACCOUNT_PATH = "/Users/muslimhussaini/blackbox/backend/keys/blackbox-firebase.json"
+SERVICE_ACCOUNT_PATH = os.getenv("SERVICE_PATH")
 
 
 def initialize_firebase():
@@ -20,19 +18,7 @@ def initialize_firebase():
         db = firestore.client()
         print("Connected to Firestore!")
 
-        # Test Writing to Firestore
-        user_collection = db.collection("users")
-        """
-        user_collection.add({
-            "username": "johndoe1",
-            "email": "johndoe@example.com",
-            "password": "abc123",
-            "profile_picture": "",
-            "bio": "Just another tech enthusiast!",
-            "followers": [],
-            "following": []
-        })
-        """
+
 
         print("Document written successfully!")
         return db
