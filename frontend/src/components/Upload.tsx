@@ -3,11 +3,11 @@ import axios from "axios";
 
 interface UploadProps {
   uploadUrl: string; // API endpoint to send files
+  username: string; //username from uauth
 }
 
-const Upload: React.FC<UploadProps> = ({ uploadUrl }) => {
+const Upload: React.FC<UploadProps> = ({ uploadUrl, username }) => {
   const [files, setFiles] = useState<FileList | null>(null);
-  const [link, setLink] = useState<string>("");
   const [uploading, setUploading] = useState(false);
   const [message, setMessage] = useState<string | null>(null);
 
@@ -30,7 +30,7 @@ const Upload: React.FC<UploadProps> = ({ uploadUrl }) => {
       formData.append("files", file);
     });
 
-    formData.append("link", link); // Send the link with the files
+    formData.append("username", username);
 
     try {
       const response = await axios.post(uploadUrl, formData, {
@@ -51,15 +51,6 @@ const Upload: React.FC<UploadProps> = ({ uploadUrl }) => {
       <h2>Upload Files</h2>
 
       <input type="file" multiple onChange={handleFileChange} />
-      <br /><br />
-
-      <input
-        type="text"
-        placeholder="Enter a link (optional)"
-        value={link}
-        onChange={(e) => setLink(e.target.value)}
-        style={{ width: "300px", padding: "5px" }}
-      />
       <br /><br />
 
       <button onClick={handleUpload} disabled={uploading}>
