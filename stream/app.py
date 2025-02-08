@@ -6,7 +6,7 @@ import os
 import requests
 
 app = Flask(__name__)
-CORS(app, origins=["http://localhost:5173"])
+CORS(app, origins=["http://localhost:5173", "http://localhost:5000"])
 
 # Open the camera (you can modify the index if you have multiple cameras)
 cap = cv2.VideoCapture(0)
@@ -66,4 +66,4 @@ def video_stream():
     return Response(generate_frames(), content_type='multipart/x-mixed-replace; boundary=frame')
 
 if __name__ == '__main__':
-    app.run(host='1.1.1.1', port=8000)
+    app.run(host='0.0.0.0', port=8000)
