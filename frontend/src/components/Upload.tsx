@@ -7,7 +7,6 @@ interface UploadProps {
 
 const Upload: React.FC<UploadProps> = ({ uploadUrl }) => {
   const [files, setFiles] = useState<FileList | null>(null);
-  const [link, setLink] = useState<string>("");
   const [uploading, setUploading] = useState(false);
   const [message, setMessage] = useState<string | null>(null);
 
@@ -30,8 +29,6 @@ const Upload: React.FC<UploadProps> = ({ uploadUrl }) => {
       formData.append("files", file);
     });
 
-    formData.append("link", link); // Send the link with the files
-
     try {
       const response = await axios.post(uploadUrl, formData, {
         headers: { "Content-Type": "multipart/form-data" },
@@ -51,15 +48,6 @@ const Upload: React.FC<UploadProps> = ({ uploadUrl }) => {
       <h2>Upload Files</h2>
 
       <input type="file" multiple onChange={handleFileChange} />
-      <br /><br />
-
-      <input
-        type="text"
-        placeholder="Enter a link (optional)"
-        value={link}
-        onChange={(e) => setLink(e.target.value)}
-        style={{ width: "300px", padding: "5px" }}
-      />
       <br /><br />
 
       <button onClick={handleUpload} disabled={uploading}>
