@@ -1,15 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import axios from "axios";
+import { AppContext } from '../store/appContext';
 
-interface UploadProps {
-  uploadUrl: string; // API endpoint to send files
-}
-
-const Upload: React.FC<UploadProps> = ({ uploadUrl }) => {
+const Upload: React.FC = () => {
   const [files, setFiles] = useState<FileList | null>(null);
-  const [link, setLink] = useState<string>("");
   const [uploading, setUploading] = useState(false);
   const [message, setMessage] = useState<string | null>(null);
+  const { state, actions } = useContext(AppContext);
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.files) {
@@ -26,14 +23,16 @@ const Upload: React.FC<UploadProps> = ({ uploadUrl }) => {
     setMessage(null);
 
     const formData = new FormData();
+    formData.append("username", state.username || "");
     Array.from(files).forEach((file) => {
       formData.append("files", file);
     });
 
-    formData.append("link", link); // Send the link with the files
+    // Optionally, append a username if needed
+    // formData.append("username", username);
 
     try {
-      const response = await axios.post(uploadUrl, formData, {
+      const response = await axios.post("//127.0.0.1:5000/upload", formData, {
         headers: { "Content-Type": "multipart/form-data" },
       });
 
@@ -51,15 +50,6 @@ const Upload: React.FC<UploadProps> = ({ uploadUrl }) => {
       <h2>Upload Files</h2>
 
       <input type="file" multiple onChange={handleFileChange} />
-      <br /><br />
-
-      <input
-        type="text"
-        placeholder="Enter a link (optional)"
-        value={link}
-        onChange={(e) => setLink(e.target.value)}
-        style={{ width: "300px", padding: "5px" }}
-      />
       <br /><br />
 
       <button onClick={handleUpload} disabled={uploading}>
