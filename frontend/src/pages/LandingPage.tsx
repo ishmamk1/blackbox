@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import { AppContext } from '../store/appContext';
+import VideoStream from '@/components/VideoStream';
 
 
 const LandingPage: React.FC = () => {
@@ -12,6 +13,7 @@ const LandingPage: React.FC = () => {
                 <h1 className="text-2xl font-semibold text-gray-800">Hello, {state.username}</h1>
                 <h1 className="text-sm text-gray-600 break-words mt-2">{state.token}</h1>
                 <h1 className="text-lg text-gray-700 mt-2">{state.email}</h1>
+                <VideoStream/>
                 </div>
             
             ) : (
