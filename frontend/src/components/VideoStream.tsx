@@ -5,7 +5,7 @@ const VideoStream: React.FC = () => {
     <div>
       <h2>Live Video Stream</h2>
       <img
-        src="http://10.253.211.32:8000/video_stream"
+        src="http://10.253.210.224:8000/video_stream"
         alt="Live Stream"
         style={{ width: "640px", height: "480px", border: "2px solid black" }}
       />

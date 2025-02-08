@@ -20,7 +20,7 @@ interface AppContextType {
 }
 
 const defaultContextValue: AppContextType = {
-    state: { token: null, email: null, username: null },
+    state: { token: null, email: null, username: null},
     actions: {
         setToken: () => {},
         setUsername: () => {},
