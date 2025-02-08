@@ -3,10 +3,10 @@ import axios from "axios";
 
 interface UploadProps {
   uploadUrl: string; // API endpoint to send files
-  userName: string
+  username: string; //username from uauth
 }
 
-const Upload: React.FC<UploadProps> = ({ uploadUrl }) => {
+const Upload: React.FC<UploadProps> = ({ uploadUrl, username }) => {
   const [files, setFiles] = useState<FileList | null>(null);
   const [uploading, setUploading] = useState(false);
   const [message, setMessage] = useState<string | null>(null);
@@ -29,6 +29,8 @@ const Upload: React.FC<UploadProps> = ({ uploadUrl }) => {
     Array.from(files).forEach((file) => {
       formData.append("files", file);
     });
+
+    formData.append("username", username);
 
     try {
       const response = await axios.post(uploadUrl, formData, {
