@@ -10,7 +10,7 @@ export default function Navbar() {
 
     return (
         <main className="flex flex-col">
-        <header className="flex items-center justify-between px-4 py-3">
+        <header className="flex items-center justify-between px-4 py-3 bg-gray-950">
             {/* Left: About Us Button */}
             <button className="text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-9 rounded-md px-3 flex items-center gap-2">
             about us
@@ -18,7 +18,7 @@ export default function Navbar() {
             {/* Center: Echo Text */}
             <div className="text-center flex-grow">
             <a href="/">
-                <span className="text-black text-2xl transition-all duration-300 hover:scale-105">blackbox</span>
+                <span className="text-white text-2xl transition-all duration-300 hover:scale-105">BlackBox</span>
             </a>
             </div>
 
