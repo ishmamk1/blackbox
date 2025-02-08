@@ -4,5 +4,4 @@ backend/keys/*
 
 stream/uploads
 
-
-.png
+/backend/images/*
