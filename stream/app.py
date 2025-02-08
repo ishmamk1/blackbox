@@ -3,9 +3,10 @@ import cv2
 from flask_cors import CORS
 import time
 import os
+import requests
 
 app = Flask(__name__)
-CORS(app)
+CORS(app, origins=["http://localhost:5173"])
 
 # Open the camera (you can modify the index if you have multiple cameras)
 cap = cv2.VideoCapture(0)
@@ -43,6 +44,14 @@ def generate_frames():
             image_filename = os.path.join(uploads_folder, f'screenshot_{timestamp}.jpg')
             cv2.imwrite(image_filename, frame)
             last_saved_time = current_time  # Update the last saved time
+
+            with open(image_filename, "rb") as img_file:
+                files = {"file": img_file}
+                try:
+                    response = requests.post("http://127.0.0.1:5000/test", files=files)
+                    print(f"Sent {image_filename}, Response: {response.text}")
+                except requests.exceptions.RequestException as e:
+                    print(f"Failed to send screenshot: {e}")
 
         # Convert the frame to bytes and yield it to stream
         frame = buffer.tobytes()

@@ -9,3 +9,5 @@ stream/uploads
 /backend/familiar_faces/*
 
 */__pycache__/
+backend/api/__pycache__
+backend/service/__pycache__

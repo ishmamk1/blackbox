@@ -29,6 +29,16 @@ def upload_image():
     return jsonify({"message": "File upload"}), 200
 
 
+@uploads.route("/test", methods=["POST"])
+def test():
+    file = request.files.get("file")
+
+    presigned_url = upload_image_to_s3(file)
+    return presigned_url
+
+
+
+
 """
 @uploads.route("/intrusion_alerts", methods=["GET", "POST"])
 def get_intrusions():
