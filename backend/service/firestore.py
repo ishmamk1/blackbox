@@ -3,7 +3,7 @@ from firebase_admin import credentials, firestore
 import datetime
 
 # Path to your service account JSON file
-SERVICE_ACCOUNT_PATH = "/Users/ishmam/echo/backend/service/keys/service-account.json"
+SERVICE_ACCOUNT_PATH = "/Users/ishmam/blackbox-1/backend/keys/service-account.json"
 
 def initialize_firebase():
     try:
@@ -27,18 +27,6 @@ def initialize_firebase():
             "bio": "Just another tech enthusiast!",
             "followers": [],
             "following": []
-        })
-        """
-
-        posts_collection = db.collection("posts")
-        """
-        posts_collection.add({
-            "username": "john_doe_123",                   
-            "content": "This is a sample post content",   
-            "media": "",
-            "likes": [],
-            "comments": [],
-            "created": "2025-01-23T10:00:00Z" 
         })
         """
 
@@ -79,16 +67,5 @@ def register_new_user(username: str, email:str, password: str):
     })
     return check_user_exists(username)
 
-def create_posts( username: str, content: str):
-
-    posts_collection = db.collection("posts")
-    posts_collection.add({
-        "username": username,                   
-        "content": content,   
-        "media": "",
-        "likes": [],
-        "comments": [],
-        "created": str(datetime.date.today())
-    })
 
 db = initialize_firebase()

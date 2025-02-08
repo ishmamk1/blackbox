@@ -18,7 +18,7 @@ export default function Navbar() {
             {/* Center: Echo Text */}
             <div className="text-center flex-grow">
             <a href="/">
-                <span className="text-black text-2xl transition-all duration-300 hover:scale-105">app</span>
+                <span className="text-black text-2xl transition-all duration-300 hover:scale-105">blackbox</span>
             </a>
             </div>
 
@@ -38,7 +38,7 @@ export default function Navbar() {
             )}
 
             {/* Right: GitHub Icon Button */}
-            <a href="https://github.com/ishmamk1/echo">
+            <a href="https://github.com/ishmamk1/blackbox">
             <button className="text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-9 rounded-md px-3 flex items-center gap-2">
             <svg
                 className="w-4 h-4"
