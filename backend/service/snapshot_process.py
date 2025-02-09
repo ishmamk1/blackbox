@@ -1,12 +1,12 @@
 import sys
 import os
-sys.path.append(os.path.abspath("../models"))  # Add the directory to sys.path
-import facial_recognition
-import person_detection 
+# sys.path.append(os.path.abspath("../"))  # Add the directory to sys.path
+from models.facial_recognition import *
+from models.person_detection import *
 import base64 
 import numpy as np 
 import cv2
-import aws_service
+from service.aws_service import *
 import jsonify
 import firestore
 import io
@@ -25,10 +25,10 @@ def process_snapshot(encoded_image: str) -> bool:
     image_data = base64.b64decode(encoded_image)
     image_file = io.BytesIO(image_data)
     
-    if person_detection.people_present(image_file):
-        if facial_recognition.intruder_alert(image_file):
+    if people_present(image_file):
+        if intruder_alert(image_file):
             # Upload to AWS and Firebase
-            presigned_url = aws_service.upload_image_to_s3(image_file)
+            presigned_url = upload_image_to_s3(image_file)
 
             with open("../user.txt", "r") as file:
                 username = file.read()

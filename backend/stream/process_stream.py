@@ -5,8 +5,8 @@ import sys
 import os
 import base64
 
-sys.path.append(os.path.abspath("../service"))  # Add the directory to sys.path
-import snapshot_process
+# sys.path.append(os.path.abspath("../service"))  # Add the directory to sys.path
+from service.snapshot_process import *
 
 def get_youtube_stream_url(youtube_url):
     ydl_opts = {
@@ -35,7 +35,8 @@ def analyze_stream(url: str):
             _, buffer = cv2.imencode('.jpg', frame)
             encoded_image = base64.b64encode(buffer).decode('utf-8')
 
-            snapshot_process.process_snapshot(encoded_image)
+            if process_snapshot(encoded_image):
+                print("intruder detected")
             
             last_saved_time = current_time  # Reset timer
 

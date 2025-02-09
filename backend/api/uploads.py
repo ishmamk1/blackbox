@@ -6,6 +6,10 @@ from service.firestore import *
 
 from service.aws_service import * 
 
+from stream.process_stream import *
+
+import threading
+
 uploads = Blueprint('uploads', __name__)
 
 @uploads.route("/upload", methods=["POST"])
@@ -46,9 +50,17 @@ def receive_video_url():
         if youtube_url:
             print(f"Received YouTube URL: {youtube_url}")
             # Process the URL or store it as needed
+
+            # Start background thread
+            thread = threading.Thread(target=analyze_stream, args=(youtube_url,), daemon=True)
+            thread.start()
+
             return jsonify({"message": "YouTube URL received successfully", "youtubeUrl": youtube_url}), 200
         else:
             return jsonify({"error": "No YouTube URL provided"}), 400
+        
+
+        
     
     except Exception as e:
         print(f"Error processing the URL: {e}")
