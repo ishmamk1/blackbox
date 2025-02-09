@@ -73,5 +73,4 @@ def add_intrusion(username:str, image_url:str):
     })
 
 
-
 db = initialize_firebase()
