@@ -20,6 +20,7 @@ const RegisterPage: React.FC = () => {
           username,
           email,
           password,
+          phone_number: ""  // Always send an empty string for phone_number
       });
   
       if (response.status === 200) {

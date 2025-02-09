@@ -44,6 +44,8 @@ def register():
     username = request.json.get("username", None)
     email = request.json.get("email", None)
     password = request.json.get("password", None)
+    phone_number = request.json.get("phone_number", "")  # Default to empty string if not provided
+
 
     if not username or not password or not email:
         return jsonify({"error": "Email and password are required"}), 400

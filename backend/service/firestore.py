@@ -47,21 +47,26 @@ def check_email_exists(email: str):
 def register_new_user(username: str, email: str, password: str):
     users_collection = db.collection("users")
 
+    user_data = {
+        "username": username,
+        "email": email,
+        "password": password,
+        "profile_picture": "",
+        "bio": "No bio yet.",
+        "followers": [],
+        "following": [],
+        "phone_number": ""  # Default value
+    }
+    print(f"User data being sent to Firestore: {user_data}")
+
     try:
-        users_collection.add({
-            "username": username,
-            "email": email,
-            "password": password,
-            "profile_picture": "",
-            "bio": "No bio yet.",
-            "followers": [],
-            "following": []
-        })
-        print(f"User {username} added successfully!")  # Debugging
+        users_collection.add(user_data)
+        print(f"User {username} added successfully!")
     except Exception as e:
         print("Error adding user:", e)
 
     return check_user_exists(username)
+
 
 
 def add_new_image(username: str, image_url:str):
