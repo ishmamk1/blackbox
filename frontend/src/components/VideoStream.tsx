@@ -10,13 +10,33 @@ const VideoStream: React.FC = () => {
   };
 
   // Handle form submission
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const videoId = extractVideoId(youtubeUrl);
     console.log('Extracted Video ID:', videoId);
+    
     if (videoId) {
-      // Adding mute=1 may help with autoplay issues on live streams.
       setEmbedUrl(`https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1`);
+      
+      // Send the URL to Flask backend
+      try {
+        const response = await fetch('http://127.0.0.1:5000/video_url', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ youtubeUrl }),
+        });
+
+        if (!response.ok) {
+          throw new Error('Failed to send YouTube URL');
+        }
+
+        const data = await response.json();
+        console.log('Response from Flask:', data);
+      } catch (error) {
+        console.error('Error:', error);
+      }
     } else {
       alert('Please enter a valid YouTube URL');
     }
@@ -39,7 +59,7 @@ const VideoStream: React.FC = () => {
           placeholder="Enter YouTube URL"
           value={youtubeUrl}
           onChange={handleUrlChange}
-          className="border border-gray-400 p-2 rounded"
+          className="border border-gray-400 p-2 rounded text-black"
         />
         <button
           type="submit"
