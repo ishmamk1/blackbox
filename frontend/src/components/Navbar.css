@@ -8,6 +8,20 @@
     color: white;
 }
 
+/* Left section of the navbar (logo and About Us) */
+.navbar-left {
+    display: flex;
+    align-items: center;
+    gap: 16px;  /* Add some space between the logo and the About Us button */
+}
+
+/* Logo */
+.logo img {
+    height: 24px;
+    width: 24px;
+    object-fit: cover;
+}
+
 /* Buttons */
 .navbar button {
     font-size: 14px;

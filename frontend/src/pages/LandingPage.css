@@ -1,0 +1,29 @@
+.landing-page {
+    display: flex;  /* Enable flexbox layout */
+    flex-direction: column;  /* Stack the content vertically */
+    min-height: 80vh;  /* Take up the full viewport height */
+    background-color: transparent;
+  }
+  
+  /* Container for the logo placed behind everything */
+  .logo-background-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);  /* Center the logo in the middle of the screen */
+    width: 300px;  /* Set the width for the logo */
+    height: 300px;  /* Set the height for the logo */
+    background-size: contain;
+    background-repeat: no-repeat;
+    z-index: -1;  /* Make sure the logo stays behind the content */
+  }
+  
+  .content {
+    flex-grow: 1;  /* This makes the content section take the remaining space */
+    padding-bottom: 20px;  /* Add some padding at the bottom to ensure footer is not hidden */
+  }
+
+  /* Footer Styles */
+footer {
+    margin-top: auto;  /* This pushes the footer to the bottom */
+  }
