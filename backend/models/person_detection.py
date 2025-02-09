@@ -2,11 +2,16 @@ import cv2
 import numpy as np
 import base64
 
+net = cv2.dnn.readNetFromCaffe(
+    "/Users/nakibabedin/Desktop/blackbox/backend/models/deploy.prototxt",
+    "/Users/nakibabedin/Desktop/blackbox/backend/models/mobilenet_iter_73000.caffemodel"
+)
+
 
 def people_present( encoded_image : str ) -> bool:
 
     # Load the pre-trained model
-    net = cv2.dnn.readNetFromCaffe("deploy.prototxt", "mobilenet_iter_73000.caffemodel")
+    global net
 
     # Decode Base64 string, convert to numpy array, then decode into a OpenCV image
     image_data = base64.b64decode(encoded_image)
