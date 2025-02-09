@@ -45,7 +45,7 @@ def register():
     email = request.json.get("email", None)
     password = request.json.get("password", None)
 
-    if not username or not password or not password:
+    if not username or not password or not email:
         return jsonify({"error": "Email and password are required"}), 400
     
     user = check_user_exists(username)

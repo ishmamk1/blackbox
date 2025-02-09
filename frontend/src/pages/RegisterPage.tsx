@@ -13,30 +13,28 @@ const RegisterPage: React.FC = () => {
 
     const navigate = useNavigate();
     
-    const registerUser = async () => {
-        const response = await httpClient.post('//127.0.0.1:5000/register', {
-            username,
-            email,
-            password,
-        })
-
-        if (response.status == 200) {
-            console.log(response.data.access_token);
-            console.log(email)
-            sessionStorage.setItem("token", response.data.access_token);
-            sessionStorage.setItem("email", email)
-            sessionStorage.setItem("username", username)
-            actions.setUsername(username);
-            actions.setToken(response.data.access_token);
-            console.log("Token" + state.token);
-            actions.setEmail(email);
-            console.log("Email"+ state.email);
-            navigate("/");
-        } else if (response.status == 401) {
-            console.log("Register not working")
-            console.log("invalid credentials");
-        }
-    };
+    const registerUser = async (event: React.FormEvent) => {
+      event.preventDefault();  // Prevent page reload on form submit
+  
+      const response = await httpClient.post('//127.0.0.1:5000/register', {
+          username,
+          email,
+          password,
+      });
+  
+      if (response.status === 200) {
+          sessionStorage.setItem("token", response.data.access_token);
+          sessionStorage.setItem("email", email);
+          sessionStorage.setItem("username", username);
+          actions.setUsername(username);
+          actions.setToken(response.data.access_token);
+          actions.setEmail(email);
+          navigate("/");
+      } else if (response.status === 400) {
+          console.log("User already exists or invalid data");
+      }
+  };
+  
 
     return (
             <section className="bg-gray-50 dark:bg-gray-900 flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">

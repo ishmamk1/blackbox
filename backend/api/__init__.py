@@ -16,7 +16,7 @@ def create_app():
     # sql_db.init_app(app)
 
     jwt = JWTManager(app)
-    CORS(app, supports_credentials=True, origins=["http://localhost:5000", "http://localhost:5173"])
+    CORS(app, supports_credentials=True, origins=["http://localhost:5000", "http://localhost:5173", "http://127.0.0.1:5000", "http://127.0.0.1:5173"])
 
     from .auth import auth
     from .uploads import uploads

@@ -44,18 +44,25 @@ def check_email_exists(email: str):
     user = results[0].to_dict() if len(results) > 0 else None
     return user
 
-def register_new_user(username: str, email:str, password: str):
+def register_new_user(username: str, email: str, password: str):
     users_collection = db.collection("users")
-    users_collection.add({
-        "username": username,
-        "email": email,
-        "password": password,
-        "profile_picture": "",
-        "bio": "No bio yet.",
-        "followers": [],
-        "following": []
-    })
+
+    try:
+        users_collection.add({
+            "username": username,
+            "email": email,
+            "password": password,
+            "profile_picture": "",
+            "bio": "No bio yet.",
+            "followers": [],
+            "following": []
+        })
+        print(f"User {username} added successfully!")  # Debugging
+    except Exception as e:
+        print("Error adding user:", e)
+
     return check_user_exists(username)
+
 
 def add_new_image(username: str, image_url:str):
     image_collection = db.collection("imageUpload")

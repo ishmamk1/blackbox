@@ -12,7 +12,7 @@ const LoginPage: React.FC = () => {
     const navigate = useNavigate();
     
     const loginUser = async () => {
-        const response = await httpClient.post('//127.0.0.1:5000/token', {
+        const response = await httpClient.post('http://127.0.0.1:5000/token', {
             email,
             password,
         })
