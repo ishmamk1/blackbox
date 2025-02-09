@@ -36,7 +36,7 @@ def generate_frames():
         ret, buffer = cv2.imencode('.jpg', frame)
         if not ret:
             continue
-
+        
         # Capture and save a screenshot every 5 seconds
         current_time = time.time()
         if current_time - last_saved_time >= 5:
@@ -44,6 +44,7 @@ def generate_frames():
             image_filename = os.path.join(uploads_folder, f'screenshot_{timestamp}.jpg')
             cv2.imwrite(image_filename, frame)
             last_saved_time = current_time  # Update the last saved time
+
 
             with open(image_filename, "rb") as img_file:
                 files = {"file": img_file}
@@ -66,4 +67,4 @@ def video_stream():
     return Response(generate_frames(), content_type='multipart/x-mixed-replace; boundary=frame')
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=8000)
+    app.run(host="0.0.0.0", port=8000)
