@@ -1,5 +1,7 @@
 import { AppContext } from "@/store/appContext";
 import React, { useContext } from "react";
+import "./Navbar.css";
+
 
 export default function Navbar() {
     const { state, actions } = useContext(AppContext);

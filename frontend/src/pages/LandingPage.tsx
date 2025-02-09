@@ -10,8 +10,7 @@ const LandingPage: React.FC = () => {
         <div>
             {state.token != null ? (
                 <div className="bg-gray-100 p-6 rounded-lg shadow-md text-center max-w-md mx-auto">
-                <h1 className="text-2xl font-semibold text-gray-800">Hello, {state.username}</h1>
-                <h1 className="text-sm text-gray-600 break-words mt-2">{state.token}</h1>
+                <h1 className="text-2xl font-semibold text-gray-800">Hello {state.username} </h1>
                 <h1 className="text-lg text-gray-700 mt-2">{state.email}</h1>
                 <VideoStream/>
                 </div>
@@ -20,7 +19,7 @@ const LandingPage: React.FC = () => {
             <div className="flex items-center justify-center min-h-screen bg-gray-50 dark:bg-gray-900"> 
                 <div className="text-center">
                     <h1 className="text-4xl font-extrabold text-slate-200 mb-4">
-                        Welcome to APP_NAME!
+                        Welcome to BlackBox!
                     </h1>
                     <p className="text-lg text-slate-500 mb-8">
                         Log in or create an account to start sharing your thoughts.
