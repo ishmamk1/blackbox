@@ -17,7 +17,7 @@ export default function Navbar() {
             <div className="navbar-left flex items-center gap-4">
                 {/* Logo */}
                 <a href="/" className="logo">
-                    <img src="/HexagonLogo.png" alt="Logo" className="h-7 w-7" />
+                    <img src="/HexagonLogo.png" alt="Logo" className="h-8 w-8" />
                 </a>
 
                 {/* About Us Button */}
