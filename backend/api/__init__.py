@@ -21,11 +21,13 @@ def create_app():
     from .auth import auth
     from .uploads import uploads
     from .phone import phone
+    from .livestream import livestream
     # import other routes here
 
     app.register_blueprint(auth, url_prefix="/")
     app.register_blueprint(uploads, url_prefix="/")
     app.register_blueprint(phone, url_prefix='/')  # Register the phone blueprint
+    app.register_blueprint(livestream, url_prefix="/")
 
 
     """
