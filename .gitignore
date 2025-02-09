@@ -11,3 +11,7 @@ stream/uploads
 */__pycache__/
 backend/api/__pycache__
 backend/service/__pycache__
+
+
+.env
+node_modules/

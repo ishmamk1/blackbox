@@ -11,6 +11,10 @@ from service.firestore import db, check_user_exists, register_new_user, check_em
 
 auth = Blueprint('auth', __name__)
 
+@auth.route("/")
+def hello():
+    return "hi"
+
 @auth.route("/token", methods=["POST"])
 def create_token():
     if not db:
