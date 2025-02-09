@@ -64,7 +64,7 @@ def add_new_image(username: str, image_url:str):
         "s3Reference": image_url
     })
     
-def add_phone_number(phone_number: str, username: str):
+def add_phone_number(username: str, phone_number: str):
     try:
         # Query Firestore to find the document by username field
         user_ref = db.collection("users").where("username", "==", username).limit(1)
