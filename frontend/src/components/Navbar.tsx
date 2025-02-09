@@ -15,10 +15,6 @@ export default function Navbar() {
         <header className="flex items-center justify-between px-4 py-3 bg-gray-950">
             {/* Left: Logo and About Us Button */}
             <div className="navbar-left flex items-center gap-4">
-                {/* Logo */}
-                <a href="/" className="logo">
-                    <img src="/HexagonLogo.png" alt="Logo" className="h-8 w-8" />
-                </a>
 
                 {/* About Us Button */}
                 {state.token != null ? (
@@ -38,11 +34,12 @@ export default function Navbar() {
             </div>
 
             {/* Center: Echo Text */}
-            <div className="text-center flex-grow">
-                <a href="/">
-                    <span className="text-white text-2xl transition-all duration-300 hover:scale-105">BlackBox</span>
-                </a>
-            </div>
+            <div className="text-center flex items-center justify-center gap-2 flex-grow">
+                    <a href="/" className="flex items-center gap-2">
+                        <img src="/HexagonLogo.png" alt="Logo" className="h-8 w-8" />
+                        <span className="text-white text-2xl transition-all duration-300 hover:scale-105">BlackBox</span>
+                    </a>
+                </div>
 
             {/* Right: Login/Logout and GitHub Icon */}
             {state.token == null ? (

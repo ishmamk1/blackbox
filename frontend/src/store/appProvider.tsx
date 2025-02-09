@@ -33,12 +33,16 @@ const AppProvider: React.FC<React.PropsWithChildren<{}>> = ({ children }) => {
     return state.username;
   };
 
-  const logout = () => {
-    setState({ token: null, email: null, username: null });
-    sessionStorage.removeItem("token");
-    sessionStorage.removeItem("email");
-    sessionStorage.removeItem("username");
-  };
+  const logout = async () => {
+        const response = await fetch('http://127.0.0.1:5000/logout', {
+          method: 'POST',
+      });
+
+      setState({ token: null, email: null, username: null });
+      sessionStorage.removeItem("token");
+      sessionStorage.removeItem("email");
+      sessionStorage.removeItem("username");
+};
 
   const getMessage = async () => {
     const response = await httpClient.get("//127.0.0.1:5000/message", {
