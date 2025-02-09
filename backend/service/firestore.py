@@ -1,6 +1,7 @@
 import firebase_admin
 from firebase_admin import credentials, firestore
-import datetime
+from datetime import datetime
+import time
 import os
 
 # Path to your service account JSON file
@@ -10,7 +11,7 @@ SERVICE_ACCOUNT_PATH = os.getenv("SERVICE_PATH")
 def initialize_firebase():
     try:
         # Initialize the Firebase Admin SDK
-        cred = credentials.Certificate(SERVICE_ACCOUNT_PATH)
+        cred = credentials.Certificate("/Users/nakibabedin/Desktop/blackbox/backend/keys/service_account.json")
         firebase_admin.initialize_app(cred)
         print("Firebase Admin SDK initialized successfully!")
 
@@ -18,14 +19,12 @@ def initialize_firebase():
         db = firestore.client()
         print("Connected to Firestore!")
 
-
-
         print("Document written successfully!")
         return db
 
     except Exception as e:
-        print("An error occurred:", e)
-        return None
+        raise ("An error occurred:", e)
+        
 
 def check_user_exists(email: str):
     users_collection = db.collection("users")

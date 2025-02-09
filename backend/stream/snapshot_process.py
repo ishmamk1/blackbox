@@ -8,7 +8,7 @@ import numpy as np
 import cv2
 from service.aws_service import *
 import jsonify
-import firestore
+from service.firestore import *
 import io
 
 
@@ -24,19 +24,20 @@ def process_snapshot(encoded_image: str) -> bool:
     # Decode the base64 string
     image_data = base64.b64decode(encoded_image)
     image_file = io.BytesIO(image_data)
+
     
-    if people_present(image_file):
-        if intruder_alert(image_file):
+    if people_present(encoded_image):
+        if intruder_alert(encoded_image):
             # Upload to AWS and Firebase
             presigned_url = upload_image_to_s3(image_file)
 
-            with open("../user.txt", "r") as file:
+            with open("/Users/nakibabedin/Desktop/blackbox/backend/user.txt", "r") as file:
                 username = file.read()
             
             if presigned_url:
-                firestore.add_intrusion(username, presigned_url)
+                add_intrusion(username, presigned_url)
             else:
-                return jsonify({"message": "File upload failed"}), 500
+                pass
             
             return True 
     return False
