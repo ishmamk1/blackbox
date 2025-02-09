@@ -13,7 +13,7 @@ cap = cv2.VideoCapture(0)
 FPS = 30
 
 # Define the uploads folder path
-uploads_folder = 'backend/uploads'
+uploads_folder = 'uploads'
 
 # Create the uploads folder if it doesn't exist
 if not os.path.exists(uploads_folder):
