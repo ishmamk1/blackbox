@@ -36,7 +36,23 @@ def test():
     presigned_url = upload_image_to_s3(file)
     return presigned_url
 
-
+@uploads.route('/video_url', methods=['POST'])
+def receive_video_url():
+    try:
+        # Parse the incoming JSON data
+        data = request.get_json()
+        youtube_url = data.get('youtubeUrl', None)
+        
+        if youtube_url:
+            print(f"Received YouTube URL: {youtube_url}")
+            # Process the URL or store it as needed
+            return jsonify({"message": "YouTube URL received successfully", "youtubeUrl": youtube_url}), 200
+        else:
+            return jsonify({"error": "No YouTube URL provided"}), 400
+    
+    except Exception as e:
+        print(f"Error processing the URL: {e}")
+        return jsonify({"error": "An error occurred"}), 500
 
 
 
