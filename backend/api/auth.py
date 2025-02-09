@@ -27,6 +27,9 @@ def create_token():
 
     if not user:
         return jsonify({"error": "Invalid email or password"}), 401
+    
+    with open('user.txt', 'w') as f:
+        f.write(email)
 
     access_token = create_access_token(identity=email)
     return jsonify(
@@ -58,8 +61,20 @@ def register():
     
     if checked_email:
         return jsonify({"error": "Email already exists"}), 400
+    
+    with open('user.txt', 'w') as f:
+        f.write(email)
 
     user = register_new_user(username, email, password)
 
     access_token = create_access_token(identity=username)
     return jsonify(access_token=access_token)
+
+@auth.route("/logout", methods=["POST"])
+def logout():
+    try:
+        with open('user.txt', 'w') as f:
+            f.write('')
+        return jsonify({"message": "Logged out successfully"}), 200
+    except Exception as e:
+        return jsonify({"error": f"Logout failed: {str(e)}"}), 500

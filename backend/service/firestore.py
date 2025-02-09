@@ -103,13 +103,10 @@ def add_phone_number(username: str, phone_number: str):
 
 
 
-
-    
-
-def add_intrusion(username:str, image_url:str):
+def add_intrusion(email:str, image_url:str):
     intrusion_collection = db.collection("intrusionLogs")
     intrusion_collection.add({
-        "username":username,
+        "email":email,
         "s3Reference": image_url,
         "datetime": str(datetime.now())
     })
