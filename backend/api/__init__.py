@@ -3,6 +3,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_jwt_extended import JWTManager
 from flask_cors import CORS
 
+
 def create_app():
     app = Flask(__name__)
 
@@ -15,14 +16,17 @@ def create_app():
     # sql_db.init_app(app)
 
     jwt = JWTManager(app)
-    CORS(app, supports_credentials=True, origins=["http://localhost:5173"])
+    CORS(app, supports_credentials=True, origins=["http://localhost:5000", "http://localhost:5173"])
 
     from .auth import auth
     from .uploads import uploads
+    from .phone import phone
     # import other routes here
 
     app.register_blueprint(auth, url_prefix="/")
     app.register_blueprint(uploads, url_prefix="/")
+    app.register_blueprint(phone, url_prefix='/')  # Register the phone blueprint
+
 
     """
     with app.app_context():
