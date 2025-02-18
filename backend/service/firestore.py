@@ -11,7 +11,7 @@ SERVICE_ACCOUNT_PATH = os.getenv("SERVICE_PATH")
 def initialize_firebase():
     try:
         # Initialize the Firebase Admin SDK
-        cred = credentials.Certificate("/Users/nakibabedin/Desktop/blackbox/backend/keys/service_account.json")
+        cred = credentials.Certificate("/Users/ishmam/blackbox-hacknyu/backend/keys/service-account.json")
         firebase_admin.initialize_app(cred)
         print("Firebase Admin SDK initialized successfully!")
 

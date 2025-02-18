@@ -1,6 +1,5 @@
 import React, { useContext } from 'react';
 import { AppContext } from '../store/appContext';
-import VideoStream from '@/components/VideoStream';
 import './LandingPage.css';
 
 const LandingPage: React.FC = () => {
@@ -16,7 +15,6 @@ const LandingPage: React.FC = () => {
                 <div className="text-center max-w-md mx-auto relative z-10">
                     <h1 className="text-2xl font-semibold text-white">Hello {state.username}</h1>
                     <h1 className="text-lg text-gray-300 mt-2">{state.email}</h1>
-                    <VideoStream />
                 </div>
             ) : (
                 <div className="text-center">

@@ -1,5 +1,4 @@
 from api import create_app
-from stream.process_stream import *
 
 app = create_app()
 

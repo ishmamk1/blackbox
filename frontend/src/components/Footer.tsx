@@ -11,25 +11,6 @@ const Footer: React.FC = () => {
     setPhoneNumber(event.target.value);
   };
 
-  const handleSubmit = async (event: React.FormEvent) => {
-    event.preventDefault();
-
-    if (phoneNumber) {
-      try {
-        // Send phone number to backend if username exists (user is logged in)
-        await axios.post("http://127.0.0.1:5000/submit-phone", { username, phoneNumber });
-
-        alert(`Phone number submitted: ${phoneNumber}`);
-        // Optionally, handle success here (e.g., clear the form or show a success message)
-      } catch (error) {
-        console.error("Phone number submit error:", error);
-        alert("Failed to submit phone number. Please try again.");
-      }
-    } else {
-      alert("Please enter a phone number.");
-    }
-  };
-
   // Only render the footer if username exists (i.e., user is logged in)
   if (!username) {
     return null; // Don't render the footer if no user is logged in
@@ -39,7 +20,7 @@ const Footer: React.FC = () => {
     <footer style={footerStyles}>
       <div style={{ textAlign: "center" }}>
         <h3>Welcome, {username}! Enter Your Phone Number</h3>
-        <form onSubmit={handleSubmit}>
+        <form>
           <input
             type="text"
             placeholder="Your phone number"
